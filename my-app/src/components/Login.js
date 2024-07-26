@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3005/login", { email, password })
+      .post("https://cafe-ms-server.vercel.app/login", { email, password })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         window.location.href = "/main"; // Redirect on successful login

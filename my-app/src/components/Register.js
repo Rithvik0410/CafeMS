@@ -15,7 +15,11 @@ function Register() {
       return alert("Passwords do not match");
     }
     axios
-      .post("http://localhost:3005/register", { name, email, password })
+      .post("https://cafe-ms-server.vercel.app/register", {
+        name,
+        email,
+        password,
+      })
       .then((result) => {
         console.log(result);
         window.location.href = "/login"; // Redirect on successful registration
