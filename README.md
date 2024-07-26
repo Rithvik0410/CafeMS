@@ -30,8 +30,8 @@ This is a web application designed to manage canteen operations efficiently. It 
  
 
 <img width="1512" alt="Screenshot 2024-07-26 at 5 20 00 PM" src="https://github.com/user-attachments/assets/484b7330-666f-4645-b4b9-4240e611facd">
-![IMG_20240726_174717](https://github.com/user-attachments/assets/b23b7085-deb8-419a-acfe-657f63409765)
-![IMG_20240726_174331](https://github.com/user-attachments/assets/33850264-1f6c-432d-8c52-eee7bced3873)
+<img src="https://github.com/user-attachments/assets/b23b7085-deb8-419a-acfe-657f63409765">
+<img src="https://github.com/user-attachments/assets/33850264-1f6c-432d-8c52-eee7bced3873">
 
 
 
