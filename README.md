@@ -1,4 +1,4 @@
-<img width="1512" alt="Screenshot 2024-07-26 at 5 20 00 PM" src="https://github.com/user-attachments/assets/d714084c-9b46-46e0-85cd-1387e1cbb75c"><img width="1512" alt="Screenshot 2024-07-26 at 5 20 00 PM" src="https://github.com/user-attachments/assets/87735232-d427-47dd-9c9c-e32e2a82fb91">![WhatsApp Image 2024-07-26 at 17 47 49](https://github.com/user-attachments/assets/bdd996c4-7502-4379-b815-61176183d29e)# Canteen Management Website
+# Canteen Management Website
 
 ## Description
 
