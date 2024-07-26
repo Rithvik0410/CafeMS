@@ -26,7 +26,9 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
-
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 // Member Schema
 const memberSchema = new mongoose.Schema({
   name: String,
