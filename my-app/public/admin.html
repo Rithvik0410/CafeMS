@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Sahyadri Canteen</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Wrapper Styling */
+    .wrapper {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Header Styling */
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    header h1 {
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Styling */
+    main section {
+      background: #fff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    main section h2 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    main section p {
+      margin-bottom: 20px;
+    }
+
+    main section div {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    /* Button Styling */
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #3498db;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+      background: #2c3e50;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+      nav ul li {
+        display: block;
+        text-align: center;
+        margin: 10px 0;
+      }
+
+      main section div {
+        flex-direction: column;
+      }
+
+      .wrapper {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+      }
+
+      footer {
+        font-size: 14px;
+      }
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+          <ul>
+            <li><a href="#manage-users">Manage Users</a></li>
+            <li><a href="#manage-menu">Manage Menu</a></li>
+            <li><a href="#manage-orders">Manage Orders</a></li>
+            <li><a href="#sales-reports">Sales Reports</a></li>
+            <li><a href="#user-feedback">User Feedback</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Manage Users Section -->
+        <section id="manage-users">
+          <h2>Manage User Roles and Permissions</h2>
+          <p>Full access to all features and functionalities.</p>
+          <div>
+            <!-- Placeholder for managing user roles and permissions -->
+            <button onclick="window.location.href='manageuser.html'">
+              View Users
+            </button>
+            <button onclick="window.location.href='manageuser.html'">
+              Add User
+            </button>
+            <button onclick="window.location.href='manageuser.html'">
+              Edit User
+            </button>
+            <button onclick="window.location.href='manageuser.html'">
+              Delete User
+            </button>
+          </div>
+        </section>
+
+        <!-- Manage Menu Section -->
+        <section id="manage-menu">
+          <h2>Update and Manage the Canteen Menu</h2>
+          <div>
+            <!-- Placeholder for updating and managing the canteen menu -->
+            <button onclick="window.location.href='menu.html'">
+              Edit Menu Item
+            </button>
+          </div>
+        </section>
+
+        <!-- Manage Orders Section -->
+        <section id="manage-orders">
+          <h2>Track and Manage Orders</h2>
+          <div>
+            <!-- Placeholder for tracking and managing orders -->
+            <button onclick="window.location.href='order.html'">
+              View Orders
+            </button>
+            <button>Update Order Status</button>
+          </div>
+        </section>
+
+        <section id="manage-seats">
+          <h2>Track and Manage Seats</h2>
+          <div>
+            <!-- Placeholder for tracking and managing orders -->
+            <button
+              onclick="window.location.href = 'http://localhost:3004/seatracker.html';"
+            >
+              Update availability
+            </button>
+            <button>Referesh</button>
+          </div>
+        </section>
+
+        <!-- Sales Reports Section -->
+        <section id="sales-reports">
+          <h2>Generate and Analyse Sales Reports</h2>
+          <div>
+            <!-- Placeholder for generating and analyzing sales reports -->
+            <button onclick="window.location.href = 'report.html'">
+              Generate Report
+            </button>
+            <button>View Report</button>
+          </div>
+        </section>
+
+        <!-- User Feedback Section -->
+        <section id="user-feedback">
+          <h2>Respond to User Feedback</h2>
+          <div>
+            <!-- Placeholder for responding to user feedback -->
+            <button onclick="window.location.href = 'view.html'">
+              View Feedback
+            </button>
+            <button onclick="window.location.href = 'feedback.html'">
+              Respond to Feedback
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2024 Sahyadri Canteen</p>
+      </footer>
+    </div>
+  </body>
+</html>

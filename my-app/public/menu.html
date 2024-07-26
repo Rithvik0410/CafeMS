@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Menu - Sahyadri Canteen</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body Styling */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      /* Wrapper Styling */
+      .wrapper {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      /* Product Card Styling */
+      .product-card {
+        background: #fff;
+        margin: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        display: inline-block;
+        width: calc(33% - 40px);
+        vertical-align: top;
+      }
+
+      .product-card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .product-card h3 {
+        margin: 10px 0;
+        color: #2c3e50;
+      }
+
+      .product-card p {
+        margin-bottom: 10px;
+        color: #3498db;
+      }
+
+      .quantity-controls {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .quantity-controls input {
+        width: 60px;
+        text-align: center;
+        margin: 0 10px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .quantity-controls button {
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .quantity-controls button:hover {
+        background-color: #2980b9;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .product-card {
+          width: calc(50% - 40px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .product-card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Food Menu</h1>
+
+      <!-- Masala Dosa -->
+      <div class="product-card">
+        <img
+          src="https://apollosugar.com/wp-content/uploads/2018/12/Masala-Dosa.jpg"
+          alt="Masala Dosa"
+        />
+        <h3>Masala Dosa</h3>
+        <p>₹50</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('masala-dosa')">-</button>
+          <input type="text" id="masala-dosa" value="50" />
+          <button onclick="incrementQuantity('masala-dosa')">+</button>
+        </div>
+      </div>
+
+      <!-- Idli-Vada -->
+      <div class="product-card">
+        <img
+          src="https://t4.ftcdn.net/jpg/04/65/28/87/360_F_465288715_F3uc0aZMhzSbNbftEzHSb6RfUVQfCHeU.jpg"
+          alt="Idli-Vada"
+        />
+        <h3>Idli-Vada</h3>
+        <p>₹40</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('idli-vada')">-</button>
+          <input type="text" id="idli-vada" value="50" readonly />
+          <button onclick="incrementQuantity('idli-vada')">+</button>
+        </div>
+      </div>
+
+      <!-- Neer Dosa -->
+      <div class="product-card">
+        <img
+          src="https://myfoodstory.com/wp-content/uploads/2022/07/Neer-Dosa-1.jpg"
+          alt="Neer Dosa"
+        />
+        <h3>Neer Dosa</h3>
+        <p>₹30</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('neer-dosa')">-</button>
+          <input type="text" id="neer-dosa" value="50" readonly />
+          <button onclick="incrementQuantity('neer-dosa')">+</button>
+        </div>
+      </div>
+
+      <!-- Avalakki -->
+      <div class="product-card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwmksFq3upP8H2kfBgr-Wu164zrono53IhUA&s"
+          alt="Avalakki"
+        />
+        <h3>Avalakki</h3>
+        <p>₹20</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('avalakki')">-</button>
+          <input type="text" id="avalakki" value="50" readonly />
+          <button onclick="incrementQuantity('avalakki')">+</button>
+        </div>
+      </div>
+
+      <!-- Puri Bhaji -->
+      <div class="product-card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG0uduLlt0XLC-uWvJNEVk7Sa3_5T2mGFwhQ&s"
+          alt="Puri Bhaji"
+        />
+        <h3>Puri Bhaji</h3>
+        <p>₹35</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('puri-bhaji')">-</button>
+          <input type="text" id="puri-bhaji" value="50" readonly />
+          <button onclick="incrementQuantity('puri-bhaji')">+</button>
+        </div>
+      </div>
+
+      <!-- Pulao -->
+      <div class="product-card">
+        <img
+          src="https://www.chefkunalkapur.com/wp-content/uploads/2022/11/DSC05514-1300x731.jpg?v=1667931759"
+          alt="Pulao"
+        />
+        <h3>Pulao</h3>
+        <p>₹40</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('pulao')">-</button>
+          <input type="text" id="pulao" value="50" readonly />
+          <button onclick="incrementQuantity('pulao')">+</button>
+        </div>
+      </div>
+
+      <!-- Upma -->
+      <div class="product-card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0de1eEupTPb0iTslAZVZ4n469Md4oyPMd1w&s"
+          alt="Upma"
+        />
+        <h3>Upma</h3>
+        <p>₹25</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('upma')">-</button>
+          <input type="text" id="upma" value="50" readonly />
+          <button onclick="incrementQuantity('upma')">+</button>
+        </div>
+      </div>
+
+      <!-- Buns -->
+      <div class="product-card">
+        <img
+          src="https://rakskitchen.net/wp-content/uploads/2020/05/mangalore-buns-500x375.jpg"
+          alt="Buns"
+        />
+        <h3>Buns</h3>
+        <p>₹30</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('buns')">-</button>
+          <input type="text" id="buns" value="50" readonly />
+          <button onclick="incrementQuantity('buns')">+</button>
+        </div>
+      </div>
+
+      <!-- Ragi Mudde -->
+      <div class="product-card">
+        <img
+          src="https://recipes.net/wp-content/uploads/2024/01/how-to-eat-ragi-mudde-1706099478.jpg"
+          alt="Ragi Mudde"
+        />
+        <h3>Ragi Mudde</h3>
+        <p>₹25</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('ragi-mudde')">-</button>
+          <input type="text" id="ragi-mudde" value="50" readonly />
+          <button onclick="incrementQuantity('ragi-mudde')">+</button>
+        </div>
+      </div>
+
+      <!-- Dahi Puri -->
+      <div class="product-card">
+        <img
+          src="https://www.cookwithmanali.com/wp-content/uploads/2020/12/Dahi-Puri-3.jpg"
+          alt="Dahi Puri"
+        />
+        <h3>Dahi Puri</h3>
+        <p>₹45</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('dahi-puri')">-</button>
+          <input type="text" id="dahi-puri" value="50" readonly />
+          <button onclick="incrementQuantity('dahi-puri')">+</button>
+        </div>
+      </div>
+
+      <!-- Gobi Manchurian -->
+      <div class="product-card">
+        <img
+          src="https://veganricha.com/wp-content/uploads/2016/05/Gobi-Manchurian-Vegan-2-3.jpg"
+          alt="Gobi Manchurian"
+        />
+        <h3>Gobi Manchurian</h3>
+        <p>₹60</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('gobi-manchurian')">-</button>
+          <input type="text" id="gobi-manchurian" value="50" readonly />
+          <button onclick="incrementQuantity('gobi-manchurian')">+</button>
+        </div>
+      </div>
+
+      <!-- Samosa -->
+      <div class="product-card">
+        <img
+          src="https://www.spiceupthecurry.com/wp-content/uploads/2016/08/IMG_4381-800x600.jpg"
+          alt="Samosa"
+        />
+        <h3>Samosa</h3>
+        <p>₹15</p>
+        <div class="quantity-controls">
+          <button onclick="decrementQuantity('samosa')">-</button>
+          <input type="text" id="samosa" value="50" readonly />
+          <button onclick="incrementQuantity('samosa')">+</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function incrementQuantity(id) {
+        const input = document.getElementById(id);
+        let currentValue = parseInt(input.value);
+        input.value = currentValue + 1;
+      }
+
+      function decrementQuantity(id) {
+        const input = document.getElementById(id);
+        let currentValue = parseInt(input.value);
+        if (currentValue > 0) {
+          input.value = currentValue - 1;
+        }
+      }
+    </script>
+    <script>
+      function incrementQuantity(id) {
+        var input = document.getElementById(id);
+        var value = parseInt(input.value);
+        input.value = value + 1;
+        localStorage.setItem(id, input.value); // Save to local storage
+      }
+
+      function decrementQuantity(id) {
+        var input = document.getElementById(id);
+        var value = parseInt(input.value);
+        if (value > 0) {
+          input.value = value - 1;
+          localStorage.setItem(id, input.value); // Save to local storage
+        }
+      }
+
+      function checkStock() {
+        var items = [
+          "chicken-biryani",
+          "paneer-butter-masala",
+          "chole-bhature",
+          "rasam-rice",
+          "naan",
+          "veg-thali",
+          "non-veg-thali",
+          "gobi-manchurian",
+          "chicken-kebab",
+          "curd-rice",
+          "fish-curry",
+        ];
+
+        items.forEach(function (item) {
+          var quantity = localStorage.getItem(item);
+          if (quantity === "0") {
+            localStorage.setItem(item + "-status", "out-of-stock"); // Set status to out-of-stock
+          } else {
+            localStorage.setItem(item + "-status", "in-stock"); // Set status to in-stock
+          }
+        });
+      }
+
+      // Call checkStock to update the stock status when the page loads
+      window.onload = checkStock;
+    </script>
+  </body>
+</html>

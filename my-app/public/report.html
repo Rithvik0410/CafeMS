@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate and Analyze Sales Reports</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .form-group button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .form-group button:hover {
+        background: #2980b9;
+      }
+
+      .report-section {
+        margin-top: 20px;
+      }
+
+      .chart-container {
+        width: 100%;
+        height: 400px;
+        margin-top: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Generate and Analyze Sales Reports</h1>
+
+      <!-- Report Generation Form -->
+      <div class="form-group">
+        <label for="start-date">Start Date</label>
+        <input type="date" id="start-date" />
+      </div>
+      <div class="form-group">
+        <label for="end-date">End Date</label>
+        <input type="date" id="end-date" />
+      </div>
+      <div class="form-group">
+        <button onclick="generateReport()">Generate Report</button>
+      </div>
+
+      <!-- Report Display Section -->
+      <div class="report-section" id="report-section" style="display: none">
+        <h2>Sales Report</h2>
+        <table id="report-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Item</th>
+              <th>Quantity Sold</th>
+              <th>Total Revenue (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Report data will be inserted here -->
+          </tbody>
+        </table>
+        <div class="chart-container" id="chart-container">
+          <!-- Chart.js chart will be rendered here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      function generateReport() {
+        const startDate = new Date(document.getElementById("start-date").value);
+        const endDate = new Date(document.getElementById("end-date").value);
+
+        if (isNaN(startDate) || isNaN(endDate) || startDate > endDate) {
+          alert("Please enter a valid date range.");
+          return;
+        }
+
+        // Fetch cart data from localStorage
+        const cartData = JSON.parse(localStorage.getItem("cartData")) || [];
+        const salesData = cartData.items.map((item) => ({
+          date: cartData.date,
+          item: item.name,
+          quantity: item.quantity,
+          revenue: item.price * item.quantity,
+        }));
+
+        // Filter sales data based on the date range
+        const filteredData = salesData.filter((item) => {
+          const itemDate = new Date(item.date);
+          return itemDate >= startDate && itemDate <= endDate;
+        });
+
+        displayReport(filteredData);
+      }
+
+      function displayReport(data) {
+        const reportTableBody = document.querySelector("#report-table tbody");
+        const chartContainer = document.getElementById("chart-container");
+        const ctx = document.createElement("canvas");
+
+        // Clear existing table rows
+        reportTableBody.innerHTML = "";
+
+        // Populate the table with filtered data
+        data.forEach((item) => {
+          const row = document.createElement("tr");
+
+          const dateCell = document.createElement("td");
+          dateCell.textContent = item.date;
+          row.appendChild(dateCell);
+
+          const itemCell = document.createElement("td");
+          itemCell.textContent = item.item;
+          row.appendChild(itemCell);
+
+          const quantityCell = document.createElement("td");
+          quantityCell.textContent = item.quantity;
+          row.appendChild(quantityCell);
+
+          const revenueCell = document.createElement("td");
+          revenueCell.textContent = item.revenue.toFixed(2);
+          row.appendChild(revenueCell);
+
+          reportTableBody.appendChild(row);
+        });
+
+        // Display the report section
+        document.getElementById("report-section").style.display = "block";
+
+        // Generate chart
+        chartContainer.innerHTML = ""; // Clear existing chart
+        chartContainer.appendChild(ctx);
+
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: data.map((item) => item.date),
+            datasets: [
+              {
+                label: "Total Revenue (₹)",
+                data: data.map((item) => item.revenue),
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

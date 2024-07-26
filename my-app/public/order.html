@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track and Manage Orders</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .order-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      .order-table th,
+      .order-table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .order-table th {
+        background: #f4f4f4;
+      }
+
+      .order-table td button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .order-table td button.update {
+        background: #2ecc71;
+      }
+
+      .order-table td button.delete {
+        background: #e74c3c;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .form-group button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .form-group button:hover {
+        background: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Track and Manage Orders</h1>
+
+      <!-- Add Order Form -->
+      <div class="form-group">
+        <label for="order-id">Order ID</label>
+        <input type="text" id="order-id" placeholder="Enter Order ID" />
+      </div>
+      <div class="form-group">
+        <label for="order-status">Order Status</label>
+        <select id="order-status">
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+          <option value="canceled">Canceled</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button onclick="addOrder()">Add Order</button>
+      </div>
+
+      <!-- Orders List Table -->
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="order-table-body">
+          <!-- Orders will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      let orders = []; // This will store orders data
+
+      function renderOrders() {
+        const tableBody = document.getElementById("order-table-body");
+        tableBody.innerHTML = ""; // Clear existing rows
+
+        orders.forEach((order, index) => {
+          const row = document.createElement("tr");
+
+          const orderIdCell = document.createElement("td");
+          orderIdCell.textContent = order.id;
+          row.appendChild(orderIdCell);
+
+          const statusCell = document.createElement("td");
+          statusCell.textContent = order.status;
+          row.appendChild(statusCell);
+
+          const actionsCell = document.createElement("td");
+
+          const updateButton = document.createElement("button");
+          updateButton.textContent = "Update Status";
+          updateButton.className = "update";
+          updateButton.onclick = () => {
+            updateOrder(index);
+          };
+          actionsCell.appendChild(updateButton);
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.className = "delete";
+          deleteButton.onclick = () => {
+            deleteOrder(index);
+          };
+          actionsCell.appendChild(deleteButton);
+
+          row.appendChild(actionsCell);
+          tableBody.appendChild(row);
+        });
+      }
+
+      function addOrder() {
+        const orderIdInput = document.getElementById("order-id");
+        const statusSelect = document.getElementById("order-status");
+
+        const id = orderIdInput.value.trim();
+        const status = statusSelect.value;
+
+        if (id) {
+          orders.push({ id, status });
+          renderOrders();
+          orderIdInput.value = ""; // Clear the input
+        } else {
+          alert("Please enter an order ID");
+        }
+      }
+
+      function updateOrder(index) {
+        const newStatus = prompt(
+          "Enter new status (pending, in-progress, completed, canceled):"
+        );
+        if (newStatus) {
+          orders[index].status = newStatus;
+          renderOrders();
+        }
+      }
+
+      function deleteOrder(index) {
+        orders.splice(index, 1);
+        renderOrders();
+      }
+    </script>
+  </body>
+</html>

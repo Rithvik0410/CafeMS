@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Feedback</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f4f4f4;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .action-buttons button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .action-buttons button:hover {
+        background: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>View Feedback</h1>
+
+      <!-- Feedback Table -->
+      <table id="feedback-table">
+        <thead>
+          <tr>
+            <th>Feedback ID</th>
+            <th>Feedback</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Feedback data will be inserted here -->
+        </tbody>
+      </table>
+
+      <div class="action-buttons">
+        <button onclick="location.href='feedback.html'">
+          Respond to Feedback
+        </button>
+        <button onclick="location.href='admin.html'">Back to Homepage</button>
+      </div>
+    </div>
+
+    <script>
+      // Dummy feedback data
+      const feedbackData = [
+        { id: "F001", text: "The food quality has improved a lot. Great job!" },
+        {
+          id: "F002",
+          text: "I found the service to be slow during lunch hours.",
+        },
+        { id: "F003", text: "The new menu items are fantastic!" },
+        { id: "F004", text: "Please consider adding more vegetarian options." },
+        // Add more dummy data as needed
+      ];
+
+      function populateFeedbackTable() {
+        const tableBody = document.querySelector("#feedback-table tbody");
+
+        // Clear existing rows
+        tableBody.innerHTML = "";
+
+        feedbackData.forEach((feedback) => {
+          const row = document.createElement("tr");
+
+          const idCell = document.createElement("td");
+          idCell.textContent = feedback.id;
+          row.appendChild(idCell);
+
+          const textCell = document.createElement("td");
+          textCell.textContent = feedback.text;
+          row.appendChild(textCell);
+
+          const actionCell = document.createElement("td");
+          actionCell.innerHTML = `<button onclick="respondToFeedback('${feedback.id}')">Respond</button>`;
+          row.appendChild(actionCell);
+
+          tableBody.appendChild(row);
+        });
+      }
+
+      function respondToFeedback(id) {
+        // Redirect to respond page with feedback ID (modify as needed)
+        window.location.href = `feedback.html?id=${id}`;
+      }
+
+      // Populate table on page load
+      window.onload = populateFeedbackTable;
+    </script>
+  </body>
+</html>

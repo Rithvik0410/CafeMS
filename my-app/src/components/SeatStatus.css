@@ -1,0 +1,27 @@
+.seat-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .seat {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .available {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .unavailable {
+    background-color: #f44336;
+    color: white;
+  }
+  

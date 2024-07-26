@@ -1,0 +1,37 @@
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.admin-header {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header nav {
+  display: flex;
+  gap: 10px;
+}
+
+.admin-header nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.admin-header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+.admin-dashboard h1 {
+  margin: 0;
+}

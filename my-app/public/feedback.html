@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Respond to Feedback</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      .form-group button {
+        background: #3498db;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .form-group button:hover {
+        background: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Respond to Feedback</h1>
+
+      <form id="response-form">
+        <div class="form-group">
+          <label for="feedback-id">Feedback ID</label>
+          <input type="text" id="feedback-id" placeholder="Enter feedback ID" />
+        </div>
+        <div class="form-group">
+          <label for="response">Response</label>
+          <textarea
+            id="response"
+            rows="5"
+            placeholder="Write your response here..."
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit Response</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("response-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const feedbackId = document.getElementById("feedback-id").value;
+          const response = document.getElementById("response").value;
+
+          // Here you can handle the response submission, e.g., send it to a server
+          console.log("Feedback ID:", feedbackId);
+          console.log("Response:", response);
+
+          // Clear the form
+          document.getElementById("feedback-id").value = "";
+          document.getElementById("response").value = "";
+          alert("Response submitted successfully.");
+        });
+    </script>
+  </body>
+</html>
