@@ -15,8 +15,6 @@ import Checkout from "./components/Checkout";
 import { CartProvider } from "./components/CartContext";
 import Payment from "./components/Payment";
 import SeatStatus from "./components/SeatStatus";
-import AdminDashboard from "./components/AdminDashboard";
-import SalesReports from "./components/SalesReports";
 
 function App() {
   return (
@@ -36,8 +34,6 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/seat-status" element={<SeatStatus />} />
-          <Route path="admin/*" element={<AdminDashboard />} />
-          <Route path="/sales-reports" element={<SalesReports />} />
 
           {/* Add other routes as needed */}
         </Routes>
