@@ -11,7 +11,7 @@ const port = 3005;
 // Middleware
 app.use(
   cors({
-    origin: [""],
+    origin: ["https://cafe-ms.vercel.app"],
     methods: ["GET", "POST"],
     credentials: true,
   })
